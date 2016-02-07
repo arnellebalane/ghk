@@ -1,6 +1,5 @@
 import fs from 'fs';
 import path from 'path';
-import shell from 'shelljs';
 import findConfig from 'find-config';
 
 
@@ -8,12 +7,18 @@ const CONFIG_FILENAME = '.ghkrc';
 
 
 function initialize(gitroot) {
-    let templates = path.join(__dirname, 'templates');
-    let hooks = path.join(gitroot, '.git', 'hooks');
-    fs.readdir(templates, (error, files) => {
+    let ghkhooks = path.join(__dirname, 'hooks');
+    let githooks = path.join(gitroot, '.git', 'hooks');
+    fs.readdir(ghkhooks, (error, files) => {
         files.forEach(file => {
-            shell.cp(path.join(templates, file), hooks);
-            fs.chmod(path.join(hooks, file), '755');
+            let githook = path.join(githooks, file);
+            let ghkhook = path.join(ghkhooks, file);
+            createHookIfNotExists(githook);
+            if (!isHookAlreadyAdded(githook, ghkhook)) {
+                fs.appendFile(githook,
+                    `\n# run ghk "${file}" hook\n${ghkhook}\n`);
+                console.log(`Added ghk ${file} hook to this repo.`);
+            }
         });
     });
 }
@@ -30,6 +35,24 @@ function activate(hook) {
             process.exit(1);
         }
     }
+}
+
+
+function createHookIfNotExists(hook) {
+    try {
+        fs.accessSync(hook, fs.W_OK);
+    } catch (e) {
+        if (e.code === 'ENOENT') {
+            fs.writeFileSync(hook, '');
+            fs.chmodSync(hook, '755');
+        }
+    }
+}
+
+
+function isHookAlreadyAdded(githook, ghkhook) {
+    let pattern = new RegExp(ghkhook);
+    return pattern.test(fs.readFileSync(githook));
 }
 
 
