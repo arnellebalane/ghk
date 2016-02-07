@@ -1,0 +1,4 @@
+#!/usr/bin/node
+import ghk from 'ghk';
+
+ghk.activate('pre-applypatch');

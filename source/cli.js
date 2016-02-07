@@ -22,7 +22,7 @@ function isInsideGitRepo() {
 
 
 if (isInsideGitRepo()) {
-    ghk(getGitRoot());
+    ghk.initialize(getGitRoot());
 } else {
     console.log('You need to be inside a git repository.');
     process.exit(1);
