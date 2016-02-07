@@ -1,6 +1,6 @@
 {
   "name": "ghk",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "write git hooks using nodejs",
   "main": "distribution/index.js",
   "bin": {
