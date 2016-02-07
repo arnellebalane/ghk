@@ -7,12 +7,14 @@ const CONFIG_FILENAME = '.ghkrc';
 
 
 function initialize(gitroot) {
-    let ghkhooks = path.join(__dirname, 'hooks');
     let githooks = path.join(gitroot, '.git', 'hooks');
+    let ghkhooks = path.join(__dirname, 'hooks');
     fs.readdir(ghkhooks, (error, files) => {
         files.forEach(file => {
             let githook = path.join(githooks, file);
             let ghkhook = path.join(ghkhooks, file);
+            ghkhook = ghkhook.replace(/^.*node_modules/,
+                path.join(gitroot, 'node_modules'));
             createHookIfNotExists(githook);
             if (!isHookAlreadyAdded(githook, ghkhook)) {
                 fs.appendFile(githook,
