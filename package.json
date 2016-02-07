@@ -34,5 +34,8 @@
     "find-config": "^0.3.0",
     "meow": "^3.7.0",
     "shelljs": "^0.6.0"
+  },
+  "engines": {
+    "node": ">0.12.0"
   }
 }

@@ -20,10 +20,13 @@ function initialize(gitroot) {
 
 
 function activate(hook) {
-    let config = getConfig(hook);
-    for (let githook of config) {
-        githook = require(githook);
-        if (!githook[hook]()) {
+    let hookPackages = getConfig(hook);
+    for (let packageName of Object.keys(hookPackages)) {
+        let githook = require(`ghk-${packageName}`);
+        let githookConfig = hookPackages[packageName];
+        let result = githook[hook](githookConfig);
+        if (result !== true) {
+            console.log(`"${hook}" hook failed: "${result}"`);
             process.exit(1);
         }
     }
