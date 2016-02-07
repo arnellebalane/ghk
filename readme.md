@@ -15,7 +15,7 @@ $ npm install -g ghk
 as well as locally in your project directory
 
 ```
-$ npm install --save ghk
+$ npm install --save-dev ghk
 ```
 
 
@@ -43,7 +43,7 @@ currently, these plugins are available:
 to use a plugin, you need to install them locally in your project:
 
 ```
-$ npm install --save PACKAGENAME
+$ npm install --save-dev PACKAGENAME
 ```
 
 and then specify in your `.ghkrc` file (can be located in your project's root
