@@ -4,16 +4,13 @@ import meow from 'meow';
 import ghk from './index';
 
 
-const cli = meow(`
-    Usage:
-        $ ghk init
-`);
+const cli = meow('Usage: $ ghk');
 
 
 function getGitRoot() {
     if (isInsideGitRepo) {
         return shell.exec('git rev-parse --show-toplevel',
-            { silent: true }).output;
+            { silent: true }).output.trim();
     }
     return null;
 }
