@@ -6,7 +6,7 @@ import babel from 'gulp-babel';
 const paths = {
     javascripts: [
         'source/**/*.js',
-        'source/templates/*'
+        'source/hooks/*'
     ]
 };
 
