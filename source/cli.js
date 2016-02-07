@@ -1,4 +1,4 @@
-#!/usr/bin/node
+#!/usr/bin/env node
 import shell from 'shelljs';
 import meow from 'meow';
 import ghk from './index';
