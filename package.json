@@ -29,5 +29,10 @@
     "gulp": "^3.9.0",
     "gulp-babel": "^6.1.2",
     "gulp-plumber": "^1.0.1"
+  },
+  "dependencies": {
+    "find-config": "^0.3.0",
+    "meow": "^3.7.0",
+    "shelljs": "^0.6.0"
   }
 }
