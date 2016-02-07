@@ -2,7 +2,10 @@
   "name": "ghk",
   "version": "0.0.0",
   "description": "write git hooks using nodejs",
-  "main": "index.js",
+  "main": "distribution/index.js",
+  "bin": {
+    "ghk": "distribution/cli.js"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -12,20 +15,6 @@
   ],
   "author": "Arnelle Balane <arnellebalane@gmail.com>",
   "license": "MIT",
-  "devDependencies": {
-    "babel-core": "^6.4.5",
-    "babel-preset-es2015": "^6.3.13",
-    "gulp": "^3.9.0",
-    "gulp-babel": "^6.1.2",
-    "gulp-plumber": "^1.0.1"
-  },
-  "dependencies": {
-    "babel-core": "^6.4.5",
-    "babel-preset-es2015": "^6.3.13",
-    "gulp": "^3.9.0",
-    "gulp-babel": "^6.1.2",
-    "gulp-plumber": "^1.0.1"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/arnellebalane/ghk.git"
@@ -33,5 +22,12 @@
   "bugs": {
     "url": "https://github.com/arnellebalane/ghk/issues"
   },
-  "homepage": "https://github.com/arnellebalane/ghk#readme"
+  "homepage": "https://github.com/arnellebalane/ghk#readme",
+  "devDependencies": {
+    "babel-core": "^6.4.5",
+    "babel-preset-es2015": "^6.3.13",
+    "gulp": "^3.9.0",
+    "gulp-babel": "^6.1.2",
+    "gulp-plumber": "^1.0.1"
+  }
 }
