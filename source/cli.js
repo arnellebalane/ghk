@@ -4,7 +4,7 @@ import meow from 'meow';
 import ghk from './index';
 
 
-const cli = meow('Usage: $ ghk');
+const cli = meow('Usage: $ ghk init');
 
 
 function getGitRoot() {
@@ -22,7 +22,11 @@ function isInsideGitRepo() {
 
 
 if (isInsideGitRepo()) {
-    ghk.initialize(getGitRoot());
+    if (cli.input[0] === 'init') {
+        ghk.initialize(getGitRoot());
+    } else {
+        cli.showHelp(1);
+    }
 } else {
     console.log('You need to be inside a git repository.');
     process.exit(1);
