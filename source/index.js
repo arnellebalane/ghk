@@ -26,7 +26,7 @@ function activate(hook) {
         let githookConfig = hookPackages[packageName];
         let result = githook[hook](githookConfig);
         if (result !== true) {
-            console.log(`"${hook}" hook failed: "${result}"`);
+            console.log(`"${hook}" hook failed: ${result}`);
             process.exit(1);
         }
     }
