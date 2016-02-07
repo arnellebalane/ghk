@@ -29,10 +29,14 @@ function activate(hook) {
     for (let packageName of Object.keys(hookPackages)) {
         let githook = require(`ghk-${packageName}`);
         let githookConfig = hookPackages[packageName];
-        let result = githook[hook](githookConfig);
-        if (result !== true) {
-            console.log(`${hook} hook failed: ${packageName}: ${result}`);
-            process.exit(1);
+        if (hook in githook) {
+            let result = githook[hook](githookConfig);
+            if (result !== true) {
+                console.log(`${hook} hook failed: ${packageName}: ${result}`);
+                process.exit(1);
+            }
+        } else {
+            throw new Error(`${packageName} does not support ${hook} hook`);
         }
     }
 }
