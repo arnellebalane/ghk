@@ -1,4 +1,4 @@
-#!/usr/bin/node
+#!/usr/bin/env node
 import ghk from 'ghk';
 
 ghk.activate('prepare-commit-msg');
