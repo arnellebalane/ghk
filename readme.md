@@ -32,7 +32,7 @@ to setup default git hooks for that repository
 
 #### plugins
 
-what **ghk** does not actually do anything rather than to setup git hooks and
+**ghk** does not actually do anything rather than to setup git hooks and
 call the appropriate ghk plugins. its the plugins that do the actual processing
 
 currently, these plugins are available:
